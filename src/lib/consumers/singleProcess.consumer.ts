@@ -1,4 +1,4 @@
-import { Processor, Process, OnQueueError, OnQueueFailed, OnQueueCompleted, OnQueueActive } from "@nestjs/bull";
+import { Processor, Process, OnQueueError, OnQueueFailed, OnQueueCompleted, OnQueueActive, OnQueueStalled } from "@nestjs/bull";
 import { Job } from "bull";
 
 @Processor('singleProcessQueue')
@@ -10,6 +10,11 @@ export class SingleProcessConsumer {
     console.log('Single process queue error: ', error)
   }
 
+  @OnQueueStalled()
+  onQueueStalled(jobId: string) {
+    console.log(`Job: ${jobId} is stalled on single process`)
+  }
+
   @OnQueueActive()
   onQueueActive(jobId: string) {
     console.log(`Processing single process job: ${jobId}`)
@@ -17,12 +22,12 @@ export class SingleProcessConsumer {
 
   @OnQueueCompleted()
   onQueueCompleted(jobId: string) {
-    console.log(`Job: ${jobId} is completed in single process`)
+    console.log(`Job: ${jobId} is completed on single process`)
   }
 
   @OnQueueFailed()
   onQueueFailed(jobId: string) {
-    console.log(`Job: ${jobId} is failed in single process`)
+    console.log(`Job: ${jobId} is failed on single process`)
   }
 
   @Process('process1')

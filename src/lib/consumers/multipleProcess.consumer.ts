@@ -13,7 +13,7 @@ export class MultipleProcessConsumer {
 
   @OnQueueStalled()
   onQueueStalled(jobId: string) {
-    console.log(`Job: ${jobId} is stalled`)
+    console.log(`Job: ${jobId} is stalled on multiple process`)
   }
 
   @OnQueueActive()
@@ -23,12 +23,12 @@ export class MultipleProcessConsumer {
 
   @OnQueueCompleted()
   onQueueCompleted(jobId: string) {
-    console.log(`Job: ${jobId} is completed in multiple process`)
+    console.log(`Job: ${jobId} is completed on multiple process`)
   }
 
   @OnQueueFailed()
   onQueueFailed(jobId: string) {
-    console.log(`Job: ${jobId} is failed in multiple process`)
+    console.log(`Job: ${jobId} is failed on multiple process`)
   }
 
   @Process('process1')
