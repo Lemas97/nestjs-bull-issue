@@ -12,8 +12,8 @@ export class MultipleProcessConsumer {
   }
 
   @OnQueueStalled()
-  onQueueStalled(jobId: string) {
-    console.log(`Job: ${jobId} is stalled on multiple process`)
+  onQueueStalled(job: Job) {
+    console.log(`Job: ${job.id} is stalled on multiple process`)
   }
 
   @OnQueueActive()

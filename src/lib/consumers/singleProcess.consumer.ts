@@ -11,8 +11,8 @@ export class SingleProcessConsumer {
   }
 
   @OnQueueStalled()
-  onQueueStalled(jobId: string) {
-    console.log(`Job: ${jobId} is stalled on single process`)
+  onQueueStalled(job: Job) {
+    console.log(`Job: ${job.id} is stalled on single process`)
   }
 
   @OnQueueActive()

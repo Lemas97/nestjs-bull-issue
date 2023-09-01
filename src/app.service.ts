@@ -30,8 +30,9 @@ export class AppService {
 
     await this.singleProcessQueue.add('process1', { jobName: 'Second job on single process queue' })
 
-    setInterval(() => {
-      this.multipleProcessQueue.add('process2', { jobName: 'First job on multiple processes queue' })
+    setInterval(async () => {
+      await this.multipleProcessQueue.add('process2', { jobName: 'First job on multiple processes queue' })
+      console.log('Added job on multiple process queue')
     }, 30000)
   }
 
